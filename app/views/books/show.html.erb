@@ -1,4 +1,5 @@
 <p><strong>Title:</strong> <%= @book.title %></p>
 <p><strong>Body:</strong> <%= @book.body %></p>
+<p><strong>Image:</strong> <%= attachment_image_tag @book, :image, :fill, 300, 300, format:'jpeg' %></p>
 
 <%= link_to "Edit", edit_book_path %> | <%= link_to "Back", books_path %>

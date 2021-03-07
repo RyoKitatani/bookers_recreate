@@ -4,7 +4,8 @@
     <tr>
       <th>Title</th>
       <th>Body</th>
-      <th colspan="3"></th>
+      <th>Image</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
   <tbody>
@@ -12,9 +13,10 @@
     <tr>
       <th><%= book.title %></th>
       <th><%= book.body %></th>
+      <th><%= attachment_image_tag book, :image, :fill, 100, 100, format:'jpeg' %></th>
       <th><%= link_to "詳細", book_path(book) %></th>
-      <th><%= link_to "編集", "#" %></th>
-      <th><%= link_to "削除", "#" %></th>
+      <th><%= link_to "編集", edit_book_path(book) %></th>
+      <th><%= link_to "削除", book_path(book), method: :delete, "data-confirm"=> "本当に消してよろしいですか？" %></th>
     </tr>
   <% end %>
   </tbody>
@@ -26,5 +28,7 @@
 <%= f.text_field :title %><br>
 <%= f.label :body %><br>
 <%= f.text_area :body %><br>
+<%= f.label :image %><br>
+<%= f.attachment_field :image %><br>
 <%= f.submit '投稿' %>
 <% end %>
